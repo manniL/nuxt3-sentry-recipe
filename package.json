@@ -1,0 +1,19 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@sentry/node": "^7.72.0",
+    "@sentry/profiling-node": "^1.2.1",
+    "@sentry/vue": "^7.72.0",
+    "nuxt": "^3.7.4"
+  }
+}
