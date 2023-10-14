@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
-  if (event.context.sentry) {
+  if (event.context.$sentry) {
     // Do something here
-    event.context.sentry.captureException(new Error('Test error'))
+    event.context.$sentry.captureException(new Error('Test error'))
   }
 })
