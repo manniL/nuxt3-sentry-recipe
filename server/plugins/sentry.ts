@@ -36,7 +36,6 @@ export default defineNitroPlugin((nitroApp) => {
     Sentry.captureException(error)
   })
 
-  // @ts-expect-error Until https://github.com/nuxt/nuxt/issues/23437 is resolved
   nitroApp.hooks.hook('request', (event) => {
     event.context.$sentry = Sentry
   })
