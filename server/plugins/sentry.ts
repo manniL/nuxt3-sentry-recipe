@@ -2,7 +2,6 @@ import * as Sentry from '@sentry/node'
 import {
   ProfilingIntegration,
 } from '@sentry/profiling-node'
-import type { H3Event } from 'h3'
 import { H3Error } from 'h3'
 
 export default defineNitroPlugin((nitroApp) => {
