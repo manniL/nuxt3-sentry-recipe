@@ -1,29 +1,23 @@
-import * as Sentry from '@sentry/node'
-import {
-  nodeProfilingIntegration,
-} from '@sentry/profiling-node'
+
+import * as Sentry from '@sentry/node';
+
 import { H3Error } from 'h3'
 
 export default defineNitroPlugin((nitroApp) => {
+
+
+  // Ensure to call this before importing any other modules!
+  
   const { public: { sentry } } = useRuntimeConfig()
-
-  if (!sentry.dsn) {
-    console.warn('Sentry DSN not set, skipping Sentry initialization')
-    return
-  }
-
   Sentry.init({
     dsn: sentry.dsn,
-    environment: sentry.environment,
-    integrations: [
-      nodeProfilingIntegration(),
-    ],
-    // Performance Monitoring
-    tracesSampleRate: 0.2,
-    // Set sampling rate for profiling - this is relative to tracesSampleRate
-    profilesSampleRate: 0.2,
-  })
-
+    debug: true,
+  
+    // Add Performance Monitoring by setting tracesSampleRate
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  });
+  
   nitroApp.hooks.hook('error', (error) => {
     // Do not handle 404s and 422s
     if (error instanceof H3Error) {
