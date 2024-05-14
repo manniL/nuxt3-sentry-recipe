@@ -14,7 +14,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     environment: sentry.environment,
     integrations: [
       Sentry.browserTracingIntegration({ router }), 
-      Sentry.replayIntegration()
+      Sentry.replayIntegration(),
+      Sentry.captureConsoleIntegration({levels:['error']}),
+      Sentry.httpClientIntegration(),
     ],
 
     // Configure this whole part as you need it!
